@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery Website</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Vollkorn:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+    
+      <div class="logo">
+        <img style="border-radius: 40px; width: 60px; height: 60px;" src="logo.png" alt="Kiara Ragodo Illustration" class="logo-img">
+      </div>
+      <div class="dropdown">
+        <h1 class="dropdown-toggle">
+          Kiara Ragodo
+          <span class="arrow">&#9660;</span> <!-- Unicode for a downward arrow -->
+        </h1>
+        <div class="dropdown-menu">
+          <p><a href="index2.html">Nelson Alpasain</a></p>
+        </div>
+      </div>
+      <ul>
+        <li><a href="#">Galleries</a></li>
+        <li><a href="#">Posters</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </aside>
+    <main class="gallery">
+      <h2>Gallery</h2>
+      <div class="gallery-grid">
+        <img src="1.jpg" alt="Gallery Image 1">
+        <img src="2.jpg" alt="Gallery Image 2">
+        <img src="3.jpg" alt="Gallery Image 3">
+        <img src="4.jpg" alt="Gallery Image 1">
+        <img src="5.jpg" alt="Gallery Image 2">
+        <img src="6.jpg" alt="Gallery Image 3">
+        <img src="7.jpg" alt="Gallery Image 1">
+        <img src="8.jpg" alt="Gallery Image 2">
+        <img src="9.jpg" alt="Gallery Image 3">
+      </div>
+    </main>
+  </div>
+  <script>
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Select all links inside the <aside>
+  const asideLinks = document.querySelectorAll(".sidebar ul li a");
+  const gallery = document.querySelector(".gallery");
+  const dropdownToggle = document.querySelector(".dropdown-toggle");
+  const dropdownMenu = document.querySelector(".dropdown-menu");
+
+  // Helper function to create an image grid
+  const createImageGrid = (images) => {
+    return `
+      <div class="gallery-grid">
+        ${images.map((src) => `<img src="${src}" alt="Gallery Image">`).join("")}
+      </div>
+    `;
+  };
+
+  // Click event for navigation links
+  asideLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault(); // Prevent default behavior
+      
+      // Get the clicked link text
+      const section = link.textContent.trim();
+
+      // Update the main content dynamically based on the clicked link
+      if (section === "Galleries") {
+        gallery.innerHTML = `
+          <h2>Gallery</h2>
+          ${createImageGrid(["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg", "9.jpg"])}
+        `;
+      } else if (section === "Posters") {
+        gallery.innerHTML = `
+          <h2>Posters</h2>
+          ${createImageGrid(["11.jpg", "12.jpg", "13.jpg"])}
+        `;
+      } else if (section === "About") {
+        gallery.innerHTML = `
+          <h2>About</h2>
+<img width="250" src="logo.png" alt="Logo" style="display: block; margin: 0 auto;">
+          <p>
+            Kiara has loved art since she was a child. She started by drawing on paper but found that her creations often got lost or damaged. To preserve her work, she transitioned to digital art and has been drawing ever since. Most of her artwork is inspired by anime. Kiara plans to create more art in the future, as digital art has become both an escape and a challenge for her. She strives for perfection, often fearing to create something 'ugly,' but feels immense relief and awe when she finishes a masterpiece, surprising herself with her capabilities.
+          </p>
+          <p>
+            Although currently inactive in creating art due to her work at ECE as a call center agent and her role in Information Technology at ACSAT, Kiara's passion for art remains unwavering. She always finds her way back to it, as art is an integral part of her life that will never fade.
+          </p>
+        `;
+      } else if (section === "Contact") {
+        gallery.innerHTML =  `
+    <h2>Contact</h2>
+    <div class="social-icons" style="text-align: center;">
+      <a href="https://www.facebook.com" target="_blank">
+        <img src="2.png" alt="Facebook" width="50" style="margin: 10px;">
+      </a>
+      <a href="https://www.instagram.com" target="_blank">
+        <img src="1.png" alt="Instagram" width="50" style="margin: 10px;">
+      </a>
+      <a href="https://www.tiktok.com" target="_blank">
+        <img src="3.png" alt="TikTok" width="50" style="margin: 10px;">
+      </a>
+    </div>
+    <p style="text-align: center;">You can reach out via email: <a href="mailto:kiaramaeragz@gmail.com">nelson@example.com</a> or follow us on social media!</p>
+  `;
+      }
+    });
+  });
+
+  // Dropdown functionality
+  if (dropdownToggle && dropdownMenu) {
+    dropdownToggle.addEventListener("click", () => {
+      dropdownMenu.classList.toggle("show");
+    });
+  }
+});
+
+    
+      </script>
+</body>
+
+
+</html>
